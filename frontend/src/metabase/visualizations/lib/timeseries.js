@@ -201,7 +201,6 @@ export function computeTimeseriesTicksInterval(xDomain, xInterval, chartWidth) {
 }
 
 // moment-timezone based d3 scale
-// adapted from https://github.com/metocean/chronological
 export const timeseriesScale = (
   tickInterval,
   tz,
@@ -218,7 +217,7 @@ export const timeseriesScale = (
     linear.domain(x.map(ms));
     return s;
   };
-  s.ticks = (...args) => {
+  s.ticks = () => {
     const [start, end] = s.domain();
     const { interval: unit, count } = tickInterval;
 
